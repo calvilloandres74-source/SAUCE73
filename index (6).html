@@ -1,0 +1,2281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chico Dulce | Menú</title>
+  <meta name="description" content="Menú de dulces, bebidas y frituras de Chico Dulce" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#290b5a;
+      --bg2:#6b18d4;
+      --purple:#5e2de0;
+      --pink:#ff3f9f;
+      --yellow:#ffe433;
+      --cyan:#40e7ff;
+      --green:#37d67a;
+      --red:#ff5c7d;
+      --orange:#ff9a2f;
+      --text:#1c1430;
+      --white:#ffffff;
+      --card:#fffdf4;
+      --soft:#f7f4ff;
+      --shadow:#12081f;
+      --muted:#6d5f86;
+    }
+
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family:"Fredoka", sans-serif;
+      color:var(--white);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255,63,159,.28), transparent 18%),
+        radial-gradient(circle at 80% 20%, rgba(64,231,255,.2), transparent 22%),
+        radial-gradient(circle at 50% 75%, rgba(255,228,51,.18), transparent 25%),
+        linear-gradient(160deg, var(--bg1), var(--bg2));
+      min-height:100vh;
+    }
+
+    a { text-decoration:none; }
+
+    .confetti{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+      z-index:0;
+    }
+    .confetti span{
+      position:absolute;
+      top:-30px;
+      font-size:22px;
+      opacity:.8;
+      animation:fall linear infinite;
+    }
+    @keyframes fall{
+      0% { transform:translateY(0) rotate(0deg); opacity:0; }
+      15% { opacity:1; }
+      100% { transform:translateY(110vh) rotate(360deg); opacity:0; }
+    }
+
+    .container{
+      position:relative;
+      z-index:1;
+      max-width:1160px;
+      margin:0 auto;
+      padding:20px 14px 120px;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:16px 18px;
+      border-radius:28px;
+      background:rgba(255,255,255,.08);
+      border:2px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(10px);
+      box-shadow:0 12px 25px rgba(0,0,0,.18);
+      margin-bottom:18px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .logo{
+      width:68px;
+      height:68px;
+      border-radius:20px;
+      background:linear-gradient(135deg, var(--yellow), #ffb21d);
+      color:#1e0d35;
+      display:grid;
+      place-items:center;
+      font-size:2.4rem;
+      box-shadow: 0 8px 0 #18082d;
+      transform:rotate(-7deg);
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      min-width:0;
+    }
+
+    .brand-text h1{
+      margin:0;
+      font-family:"Baloo 2", sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      line-height:1;
+      letter-spacing:.5px;
+    }
+
+    .brand-text p{
+      margin:4px 0 0;
+      color:rgba(255,255,255,.82);
+      font-size:.9rem;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:14px 20px;
+      border-radius:999px;
+      background:linear-gradient(135deg, #ffe600, #ffbf21);
+      color:var(--text);
+      border:3px solid #1b0d31;
+      box-shadow:0 7px 0 #1b0d31;
+      font-weight:700;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .cta:hover{
+      transform:translateY(-2px);
+    }
+
+    .hero{
+      background:rgba(255,255,255,.08);
+      border:2px solid rgba(255,255,255,.12);
+      border-radius:32px;
+      box-shadow:0 14px 24px rgba(0,0,0,.14);
+      padding:24px 18px 18px;
+      margin-bottom:20px;
+      text-align:center;
+    }
+
+    .promo{
+      display:inline-block;
+      background:var(--pink);
+      color:#fff;
+      padding:7px 18px;
+      border-radius:999px;
+      font-size:.8rem;
+      font-weight:700;
+      letter-spacing:.5px;
+      border:2px solid rgba(255,255,255,.92);
+      transform:rotate(-2deg);
+    }
+
+    .hero h2{
+      margin:16px 0 12px;
+      font-family:"Baloo 2", sans-serif;
+      line-height:.9;
+      font-size: clamp(2.3rem, 6vw, 4.6rem);
+      letter-spacing:1px;
+      text-shadow:3px 3px 0 rgba(17,7,38,.5);
+    }
+
+    .hero h2 span{
+      display:block;
+      background:linear-gradient(90deg, #ffe600, #ff9e22, #ff3b8f, #40e7ff);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      -webkit-text-stroke:2px #fff;
+    }
+
+    .hero p{
+      margin:0;
+      color:rgba(255,255,255,.82);
+      font-size:1.05rem;
+    }
+
+    .facts{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap:12px;
+      margin-top:18px;
+    }
+    .fact{
+      background:rgba(255,255,255,.1);
+      border:2px solid rgba(255,255,255,.12);
+      border-radius:20px;
+      padding:12px 10px;
+      text-align:center;
+    }
+    .fact strong{
+      display:block;
+      font-size:1.5rem;
+      font-family:"Baloo 2", sans-serif;
+      color:var(--yellow);
+      line-height:1;
+    }
+    .fact span{
+      color:rgba(255,255,255,.8);
+      font-size:.9rem;
+    }
+
+    .filters{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      margin:24px 0 12px;
+    }
+
+    .filter-btn{
+      border:none;
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      border:2px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      padding:11px 18px;
+      font-family:"Fredoka",sans-serif;
+      font-size:1rem;
+      cursor:pointer;
+      transition: all .2s ease;
+    }
+    .filter-btn.active{
+      background:linear-gradient(135deg, var(--yellow), #ffc63a);
+      color:var(--text);
+      border-color:#1e0d31;
+      box-shadow:0 6px 0 #1e0d31;
+      transform:translateY(-1px);
+    }
+
+    .menu-section{
+      position:relative;
+      margin-top:26px;
+      background:rgba(255,255,255,.08);
+      border:2px solid rgba(255,255,255,.14);
+      border-radius:30px;
+      padding:24px 14px 12px;
+      box-shadow:0 14px 22px rgba(0,0,0,.12);
+    }
+    .menu-section.hidden { display:none; }
+
+    .section-label{
+      position:absolute;
+      top:-18px;
+      left:18px;
+      background:#fff;
+      color:var(--text);
+      border:3px solid var(--shadow);
+      box-shadow:0 6px 0 var(--shadow);
+      border-radius:999px;
+      padding:7px 18px 3px;
+      font-family:"Baloo 2", sans-serif;
+      font-size:1.8rem;
+      line-height:1;
+      transform:rotate(-3deg);
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap:14px;
+      margin-top:16px;
+    }
+
+    .card{
+      position:relative;
+      background:var(--card);
+      color:var(--text);
+      border:3px solid rgba(18,8,31,.92);
+      border-radius:22px;
+      box-shadow:0 8px 0 rgba(18,8,31,.92);
+      padding:14px 12px 12px;
+      text-align:center;
+      cursor:pointer;
+      user-select:none;
+      transition: transform .18s ease, box-shadow .18s ease;
+      overflow:hidden;
+    }
+    .card:hover{ transform:translateY(-4px) rotate(-1deg); }
+    .card:active, .card.pop{
+      animation: popCard .45s ease;
+    }
+    @keyframes popCard{
+      30% { transform:scale(.96) rotate(4deg); }
+      60% { transform:scale(1.05) rotate(-4deg); }
+    }
+
+    .emoji{
+      display:block;
+      font-size:2.8rem;
+      line-height:1.1;
+      margin-bottom:4px;
+    }
+
+    .name{
+      min-height:2.7em;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1rem;
+      line-height:1.2;
+      margin:4px 0 10px;
+      font-weight:600;
+    }
+
+    .price{
+      display:inline-block;
+      background:var(--yellow);
+      color:var(--text);
+      border:3px solid #1f0d31;
+      border-radius:999px;
+      padding:7px 16px 4px;
+      font-size:1.7rem;
+      font-family:"Baloo 2", sans-serif;
+      font-weight:800;
+      transform:rotate(-2deg);
+    }
+
+    .card.hot .price{
+      background:var(--cyan);
+    }
+    .card.hot::before{
+      content:"Oferta";
+      position:absolute;
+      top:8px;
+      right:10px;
+      background:var(--pink);
+      color:#fff;
+      font-size:.7rem;
+      font-weight:700;
+      padding:4px 9px;
+      border-radius:999px;
+      border:2px solid #fff;
+      transform:rotate(12deg);
+    }
+
+    .business{
+      margin-top:30px;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap:16px;
+    }
+    .info-box{
+      background:rgba(255,255,255,.08);
+      border:2px solid rgba(255,255,255,.14);
+      border-radius:24px;
+      padding:18px 18px 20px;
+      box-shadow:0 12px 18px rgba(0,0,0,.12);
+    }
+    .info-box h3{
+      margin:0 0 12px;
+      font-family:"Baloo 2", sans-serif;
+      font-size:1.7rem;
+      color:var(--yellow);
+    }
+    .info-box p, .info-box li{
+      margin:0;
+      color:rgba(255,255,255,.82);
+      font-size:1rem;
+      line-height:1.6;
+    }
+    .info-box ul{
+      padding-left:20px;
+      margin:0;
+    }
+
+    .footer-cta{
+      margin-top:28px;
+      background:linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      border:2px solid rgba(255,255,255,.14);
+      border-radius:26px;
+      padding:18px;
+      text-align:center;
+      box-shadow:0 12px 18px rgba(0,0,0,.12);
+    }
+    .footer-cta p{
+      margin:0 0 14px;
+      font-size:1rem;
+      color:rgba(255,255,255,.9);
+    }
+    .footer-cta .mini{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      background:linear-gradient(135deg, var(--green), #1bb96f);
+      color:#fff;
+      border-radius:999px;
+      padding:14px 22px;
+      border:3px solid rgba(255,255,255,.95);
+      box-shadow:0 7px 0 #0f5a3b;
+      font-weight:700;
+    }
+
+    .spark{
+      position:fixed;
+      pointer-events:none;
+      z-index:5;
+      font-size:26px;
+      animation:fly .8s ease-out forwards;
+    }
+    @keyframes fly{
+      to{
+        transform:translate(var(--x), var(--y)) scale(.25) rotate(250deg);
+        opacity:0;
+      }
+    }
+
+
+    .qty{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      margin-top:12px;
+    }
+    .qb{
+      width:40px;
+      height:40px;
+      border-radius:50%;
+      border:3px solid #1f0d31;
+      background:var(--pink);
+      color:#fff;
+      font-family:"Baloo 2",sans-serif;
+      font-size:1.5rem;
+      font-weight:800;
+      line-height:1;
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      padding:0 0 3px;
+    }
+    .qb[data-act="minus"]{ background:#e9e1fb; color:var(--text); }
+    .qn{
+      min-width:1.6em;
+      text-align:center;
+      font-family:"Baloo 2",sans-serif;
+      font-size:1.5rem;
+      font-weight:800;
+    }
+    .card.sel{ background:#fff7b8; }
+
+    .cart-bar{
+      position:fixed;
+      left:12px;
+      right:12px;
+      bottom:calc(12px + env(safe-area-inset-bottom, 0px));
+      z-index:20;
+      max-width:620px;
+      margin:0 auto;
+      display:none;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      background:linear-gradient(135deg, var(--green), #1bb96f);
+      color:#fff;
+      border:3px solid #fff;
+      border-radius:999px;
+      padding:10px 12px 10px 20px;
+      box-shadow:0 8px 0 #0f5a3b, 0 14px 24px rgba(0,0,0,.35);
+      font-weight:700;
+      font-size:1.05rem;
+    }
+    .cart-bar.show{ display:flex; }
+    .cart-bar button{
+      border:3px solid #1b0d31;
+      background:var(--yellow);
+      color:var(--text);
+      border-radius:999px;
+      padding:10px 18px;
+      font-family:"Fredoka",sans-serif;
+      font-weight:700;
+      font-size:1rem;
+      cursor:pointer;
+    }
+
+    .overlay{
+      position:fixed;
+      inset:0;
+      z-index:30;
+      background:rgba(18,8,31,.75);
+      display:none;
+      align-items:flex-end;
+      justify-content:center;
+    }
+    .overlay.show{ display:flex; }
+    .sheet{
+      width:100%;
+      max-width:560px;
+      max-height:92vh;
+      overflow-y:auto;
+      background:var(--card);
+      color:var(--text);
+      border:3px solid var(--shadow);
+      border-radius:28px 28px 0 0;
+      padding:18px 18px calc(22px + env(safe-area-inset-bottom, 0px));
+    }
+    .sheet h3{
+      margin:0 0 10px;
+      font-family:"Baloo 2",sans-serif;
+      font-size:1.8rem;
+      color:var(--purple);
+    }
+    .row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:8px 0;
+      border-bottom:2px dotted #d9cfee;
+    }
+    .row .rn{ flex:1; min-width:0; font-weight:600; line-height:1.2; }
+    .row .rp{ font-family:"Baloo 2",sans-serif; font-weight:800; min-width:3.2em; text-align:right; }
+    .row .qty{ margin:0; gap:8px; }
+    .row .qb{ width:34px; height:34px; font-size:1.3rem; }
+    .row .qn{ font-size:1.2rem; }
+    .total{
+      display:flex;
+      justify-content:space-between;
+      font-family:"Baloo 2",sans-serif;
+      font-size:1.6rem;
+      font-weight:800;
+      margin:12px 0;
+    }
+    .sheet label{ display:block; font-weight:600; margin:10px 0 4px; }
+    .sheet input{
+      width:100%;
+      font-family:"Fredoka",sans-serif;
+      font-size:1.1rem;
+      padding:12px 14px;
+      border-radius:16px;
+      border:3px solid var(--shadow);
+      background:#fff;
+      color:var(--text);
+    }
+    .sheet input.err{ border-color:var(--red); }
+    .err-msg{ color:#d6204a; font-weight:600; font-size:.95rem; margin-top:4px; min-height:1.2em; }
+    .send{
+      width:100%;
+      margin-top:10px;
+      border:3px solid rgba(255,255,255,.95);
+      background:linear-gradient(135deg, var(--green), #1bb96f);
+      color:#fff;
+      border-radius:999px;
+      padding:15px 20px;
+      font-family:"Fredoka",sans-serif;
+      font-weight:700;
+      font-size:1.1rem;
+      box-shadow:0 7px 0 #0f5a3b;
+      cursor:pointer;
+    }
+    .close{
+      width:100%;
+      margin-top:16px;
+      background:none;
+      border:none;
+      color:var(--muted);
+      font-family:"Fredoka",sans-serif;
+      font-size:1rem;
+      cursor:pointer;
+    }
+
+
+    .stk{
+      display:none;
+      margin-top:8px;
+      font-weight:700;
+      font-size:.85rem;
+      border-radius:999px;
+      padding:2px 12px;
+      background:#e9e1fb;
+      color:var(--text);
+    }
+    body.owner .stk, body.vend .stk{ display:inline-block; }
+    .stk.low{ background:#ffd1da; color:#a10f33; }
+
+    .owner-wrap{ text-align:center; margin-top:22px; }
+    .owner-link{
+      background:none;
+      border:none;
+      color:rgba(255,255,255,.55);
+      font-family:"Fredoka",sans-serif;
+      font-size:.9rem;
+      cursor:pointer;
+      padding:8px 12px;
+    }
+    .owner-bar{
+      display:none;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      background:rgba(55,214,122,.18);
+      border:2px solid var(--green);
+      border-radius:20px;
+      padding:10px 14px;
+      margin-bottom:14px;
+      font-weight:600;
+    }
+    .owner-bar.show{ display:flex; }
+    .owner-bar div{ display:flex; gap:8px; }
+    .owner-bar button{
+      border:3px solid #1b0d31;
+      background:var(--yellow);
+      color:var(--text);
+      border-radius:999px;
+      padding:8px 16px;
+      font-family:"Fredoka",sans-serif;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .owner-bar button.out{ background:#e9e1fb; }
+
+    .inv-sum{ font-weight:600; margin-bottom:10px; line-height:1.4; }
+    .icat{
+      font-family:"Baloo 2",sans-serif;
+      font-size:1.2rem;
+      font-weight:800;
+      color:var(--purple);
+      margin:14px 0 2px;
+    }
+    .irow{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 0;
+      border-bottom:2px dotted #d9cfee;
+    }
+    .irow .rn{ flex:1; min-width:0; font-weight:600; line-height:1.2; }
+    .irow.low .rn{ color:#a10f33; }
+    .ib{
+      width:36px;
+      height:36px;
+      border-radius:50%;
+      border:3px solid #1f0d31;
+      background:var(--pink);
+      color:#fff;
+      font-family:"Baloo 2",sans-serif;
+      font-size:1.3rem;
+      font-weight:800;
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      padding:0 0 3px;
+      flex-shrink:0;
+    }
+    .ib[data-d="-1"]{ background:#e9e1fb; color:var(--text); }
+    .sheet input.istk{
+      width:74px;
+      padding:7px 4px;
+      text-align:center;
+      font-size:1.1rem;
+      border-radius:12px;
+    }
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:calc(90px + env(safe-area-inset-bottom, 0px));
+      transform:translateX(-50%);
+      z-index:40;
+      background:#1b0d31;
+      color:#fff;
+      border:2px solid #fff;
+      border-radius:999px;
+      padding:10px 18px;
+      font-weight:600;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .25s ease;
+      max-width:90vw;
+      text-align:center;
+    }
+    .toast.show{ opacity:1; }
+
+
+    .irow{ display:block; }
+    .itop{ display:flex; justify-content:space-between; gap:8px; }
+    .imeta{ font-size:.88rem; color:var(--muted); margin-top:2px; }
+    .imeta .neg{ color:#a10f33; font-weight:700; }
+    .ictl{ display:flex; align-items:center; gap:8px; margin-top:6px; }
+    .ictl label{ margin:0; font-size:.9rem; display:flex; align-items:center; gap:6px; }
+    .ictl .sp{ flex:1; }
+    .sheet input.icost{ width:88px; padding:7px 6px; font-size:1.05rem; border-radius:12px; text-align:center; }
+    .sheet select{
+      width:100%;
+      font-family:"Fredoka",sans-serif;
+      font-size:1.1rem;
+      padding:12px 10px;
+      border-radius:16px;
+      border:3px solid var(--shadow);
+      background:#fff;
+      color:var(--text);
+    }
+    .topbtns{ display:flex; gap:8px; margin:6px 0 12px; }
+    .addgrid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .addgrid label{ margin:10px 0 4px; }
+    .idel{ border:0; background:transparent; font-size:1.15rem; cursor:pointer; padding:2px 6px; line-height:1; }
+    .newtag{ font-size:.72rem; font-weight:700; background:var(--yellow); border:2px solid #1b0d31; border-radius:999px; padding:1px 7px; margin-left:6px; vertical-align:middle; }
+    .pill{
+      flex:1;
+      border:3px solid #1b0d31;
+      background:var(--yellow);
+      color:var(--text);
+      border-radius:999px;
+      padding:10px 8px;
+      font-family:"Fredoka",sans-serif;
+      font-weight:700;
+      font-size:.98rem;
+      cursor:pointer;
+    }
+    .pill.active{ background:var(--pink); color:#fff; }
+    .periods{ display:flex; gap:6px; margin-bottom:12px; }
+    .periods .pill{ padding:8px 4px; font-size:.9rem; background:#e9e1fb; }
+    .periods .pill.active{ background:var(--pink); color:#fff; }
+    .fin-cards{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px; }
+    .fcard{ border:3px solid var(--shadow); border-radius:18px; padding:8px 10px; background:#fff; }
+    .fcard small{ display:block; font-weight:600; color:var(--muted); }
+    .fcard b{ font-family:"Baloo 2",sans-serif; font-size:1.5rem; font-weight:800; line-height:1.1; }
+    .fcard.g b{ color:#13874f; }
+    .fcard.r b{ color:#c4153f; }
+    .hint{ font-size:.88rem; color:var(--muted); margin:6px 0 0; }
+    .mrow{ display:flex; align-items:center; gap:8px; padding:7px 0; border-bottom:2px dotted #d9cfee; }
+    .mrow .mi{ flex:1; min-width:0; line-height:1.2; }
+    .mrow .mi small{ display:block; color:var(--muted); }
+    .mrow .mt{ font-family:"Baloo 2",sans-serif; font-weight:800; }
+    .mrow .mt.g{ color:#13874f; }
+    .mrow .mt.r{ color:#c4153f; }
+    .mrow .del{ border:none; background:none; color:var(--muted); font-size:1.3rem; cursor:pointer; padding:4px 8px; }
+
+    .today{ margin-top:8px; padding:8px 12px; border:3px solid var(--shadow); border-radius:16px; background:#fff7b8; line-height:1.5; }
+    .today small{ color:var(--muted); font-weight:500; }
+
+    .owner-wrap{ display:flex; justify-content:center; gap:6px; }
+    body.vend label[for="custName"], body.vend #custName, body.vend label[for="custPlace"], body.vend #custPlace, body.vend #errMsg, body.vend #sendOrder{ display:none; }
+
+    .wk{ margin-top:8px; padding:8px 12px 10px; border:3px solid var(--shadow); border-radius:16px; background:#fff; }
+    .wrow{ display:grid; grid-template-columns:92px 1fr 72px; gap:8px; align-items:center; padding:4px 0; }
+    .wd small{ display:block; color:var(--muted); font-size:.75rem; font-weight:500; line-height:1; }
+    .wbar{ height:12px; background:#e9e1fb; border-radius:999px; overflow:hidden; }
+    .wbar i{ display:block; height:100%; background:linear-gradient(90deg,var(--pink),var(--orange)); border-radius:999px; }
+    .wv{ text-align:right; font-family:"Baloo 2",sans-serif; font-weight:800; }
+    .wrow.now .wd{ color:var(--pink); font-weight:700; }
+    .wtot{ margin-top:6px; font-weight:700; text-align:right; }
+
+    .wrow{ grid-template-columns:82px 1fr 96px; }
+    .wbar{ display:flex; }
+    .wbar i{ display:block; height:100%; }
+    .wbar i.bj{ background:var(--pink); }
+    .wbar i.bv{ background:var(--cyan); }
+    .wv small{ display:block; font-family:"Fredoka",sans-serif; font-size:.7rem; font-weight:500; color:var(--muted); white-space:nowrap; }
+    .wleg{ font-size:.85rem; color:var(--muted); margin:2px 0 4px; }
+    .dot{ display:inline-block; width:10px; height:10px; border-radius:50%; margin:0 4px 0 8px; }
+    .dot.j{ background:var(--pink); margin-left:0; }
+    .dot.v{ background:var(--cyan); }
+
+    .where{
+      display:inline-block;
+      margin-top:14px;
+      background:var(--yellow);
+      color:var(--text);
+      border:3px solid #1b0d31;
+      border-radius:999px;
+      padding:8px 18px;
+      font-weight:700;
+      box-shadow:0 5px 0 #1b0d31;
+    }
+
+    .card.out{ opacity:.55; filter:grayscale(.85); cursor:not-allowed; }
+    .card.out:hover{ transform:none; }
+    .card.out::after{
+      content:"AGOTADO";
+      position:absolute;
+      left:50%;
+      top:42%;
+      transform:translate(-50%,-50%) rotate(-12deg);
+      background:#a10f33;
+      color:#fff;
+      font-family:"Baloo 2",sans-serif;
+      font-weight:800;
+      letter-spacing:1px;
+      padding:4px 14px 0;
+      border:3px solid #fff;
+      border-radius:10px;
+      z-index:2;
+    }
+    .qb:disabled{ opacity:.35; cursor:not-allowed; }
+
+    @media (max-width: 700px){
+      .topbar{
+        flex-direction:column;
+        align-items:stretch;
+      }
+      .cta{
+        width:100%;
+      }
+      .brand{
+        justify-content:center;
+      }
+      .brand-text p{
+        white-space:normal;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="confetti" id="confetti"></div>
+
+  <div class="container">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">🍬</div>
+        <div class="brand-text">
+          <h1>Chico Dulce</h1>
+          <p>Snacks, dulces y bebidas para tu negocio</p>
+        </div>
+      </div>
+
+      <a class="cta" href="https://wa.me/528998737533?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noreferrer">
+        🟢 Pedir por WhatsApp
+      </a>
+    </header>
+
+    <div class="owner-bar" id="vendBar">
+      <span>🛒 Modo vendedor</span>
+      <div>
+        <button type="button" id="openVend">📋 Stock y ventas</button>
+        <button type="button" class="out" id="exitVend">Salir</button>
+      </div>
+    </div>
+
+    <div class="owner-bar" id="ownerBar">
+      <span>🔓 Modo jefe</span>
+      <div>
+        <button type="button" id="openInv">📦 Inventario</button>
+        <button type="button" id="pubOut">🌐 Publicar agotados</button>
+        <button type="button" class="out" id="exitOwner">Salir</button>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="promo">VENTA A CUALQUIER EDIFICIO • TODO PARA VENDER</div>
+      <h2><span>Lo mejor en</span><span>dulces y snacks</span></h2>
+      <p>Precios accesibles, productos frescos y atención rápida para clientes de todas las edades.</p>
+      <div class="where">📍 Estamos en el edificio L, en el receso a un lado de los tacos :3</div>
+
+      <div class="facts">
+        <div class="fact">
+          <strong>24/7</strong>
+          <span>Atención en WhatsApp</span>
+        </div>
+      </div>
+    </section>
+
+    <nav class="filters" id="filters"></nav>
+
+    <main id="menu"></main>
+
+    <section class="business">
+      <div class="info-box">
+        <h3>Horario</h3>
+        <ul>
+          <li>Lunes a Viernes: 7:00 AM - 3:00 PM</li>
+          <li>Venta a cualquier edificio</li>
+          <li>Pedidos por WhatsApp y en local</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <h3>Contacto</h3>
+        <p>📍 Edificio L, en el receso a un lado de los tacos :3</p>
+        <p>📞 +52 899 873 7533</p>
+        <p>💬 Atención rápida y amable</p>
+      </div>
+    </section>
+
+    <div class="footer-cta">
+      <p>¿Listo para pedir? Escribe por WhatsApp y te atendemos al instante.</p>
+      <a class="mini" href="https://wa.me/528998737533?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noreferrer">
+        🟢 Ordenar ahora
+      </a>
+    </div>
+    <div class="owner-wrap">
+      <button type="button" class="owner-link" id="vendBtn">🛒 Vendedor</button>
+      <button type="button" class="owner-link" id="ownerBtn">🔒 Jefe</button>
+    </div>
+  </div>
+
+  <div class="cart-bar" id="cartBar">
+    <span id="cartInfo"></span>
+    <button type="button" id="openCart">Ver pedido</button>
+  </div>
+
+  <div class="overlay" id="overlay">
+    <div class="sheet" role="dialog" aria-label="Tu pedido">
+      <h3>🛒 Tu pedido</h3>
+      <div id="orderList"></div>
+      <div class="total"><span>Total</span><span id="orderTotal">$0</span></div>
+      <label for="custName">Tu nombre *</label>
+      <input id="custName" type="text" placeholder="Ej. María López" autocomplete="name" maxlength="60">
+      <label for="custPlace">Edificio / lugar de entrega</label>
+      <input id="custPlace" type="text" placeholder="Ej. Edificio B, salón 204" maxlength="80">
+      <div class="err-msg" id="errMsg"></div>
+      <button type="button" class="send" id="sendOrder">🟢 Enviar pedido por WhatsApp</button>
+      <button type="button" class="send" id="sellBtn" style="display:none;background:linear-gradient(135deg,#ffc63a,#ff9a2f);color:var(--text);border-color:#1b0d31;box-shadow:0 7px 0 #1b0d31">✅ Registrar venta y descontar inventario</button>
+      <button type="button" class="close" id="closeCart">Seguir viendo el menú</button>
+    </div>
+  </div>
+
+  <div class="overlay" id="invOverlay">
+    <div class="sheet" role="dialog" aria-label="Inventario">
+      <h3>📦 Inventario</h3>
+      <div class="inv-sum" id="invSum"></div>
+      <div class="topbtns">
+        <button type="button" class="pill" id="invAdd">➕ Agregar producto</button>
+        <button type="button" class="pill" id="invImp">⬆️ Importar inventario de Excel</button>
+      </div>
+      <input type="file" id="impFile" accept=".csv,.xlsx,.xls,.txt" style="display:none">
+      <div id="impBox"></div>
+      <div class="topbtns">
+        <button type="button" class="pill" id="invBuy">🧾 Registrar compra</button>
+        <button type="button" class="pill" id="invFin">📊 Ventas y gastos</button>
+      </div>
+      <input id="invSearch" type="search" placeholder="Buscar producto...">
+      <div id="invList"></div>
+      <button type="button" class="send" id="invCsv">⬇️ Exportar a Excel (CSV)</button>
+      <button type="button" class="close" id="invPinV">🛒 Crear o cambiar PIN del vendedor</button>
+      <button type="button" class="close" id="invPin">Cambiar mi PIN de jefe</button>
+      <button type="button" class="close" id="invClose">Cerrar</button>
+    </div>
+  </div>
+  <div class="overlay" id="vendOverlay">
+    <div class="sheet" role="dialog" aria-label="Vendedor">
+      <h3>🛒 Vendedor</h3>
+      <div class="periods" id="vendTabs">
+        <button type="button" class="pill active" data-vt="stock">📋 Stock</button>
+        <button type="button" class="pill" data-vt="sales">💰 Mis ventas de hoy</button>
+      </div>
+      <input id="vendSearch" type="search" placeholder="Buscar producto...">
+      <div id="vendBody"></div>
+      <button type="button" class="close" id="vendClose">Cerrar</button>
+    </div>
+  </div>
+
+  <div class="overlay" id="addOverlay" style="z-index:35">
+    <div class="sheet" role="dialog" aria-label="Agregar producto">
+      <h3>➕ Agregar producto</h3>
+      <label for="addCat">Categoría</label>
+      <select id="addCat"></select>
+      <div class="addgrid">
+        <div>
+          <label for="addEmoji">Emoji</label>
+          <input id="addEmoji" type="text" maxlength="4" placeholder="🍬">
+        </div>
+        <div>
+          <label for="addPrice">Precio de venta ($)</label>
+          <input id="addPrice" type="number" inputmode="decimal" min="0" step="0.01" placeholder="Ej. 15">
+        </div>
+      </div>
+      <label for="addName">Nombre del producto</label>
+      <input id="addName" type="text" maxlength="40" placeholder="Ej. Pelon Pelo Rico">
+      <div class="addgrid">
+        <div>
+          <label for="addCost">Costo por pieza (opcional)</label>
+          <input id="addCost" type="number" inputmode="decimal" min="0" step="0.01" placeholder="Ej. 9.50">
+        </div>
+        <div>
+          <label for="addStock">Stock inicial (opcional)</label>
+          <input id="addStock" type="number" inputmode="numeric" min="0" step="1" placeholder="Ej. 24">
+        </div>
+      </div>
+      <p class="hint">Si el stock inicial fue una compra que quieres contar como gasto, mejor usa “Registrar compra” después de agregar el producto.</p>
+      <div class="err-msg" id="addErr"></div>
+      <button type="button" class="send" id="addSave">Guardar producto</button>
+      <button type="button" class="close" id="addClose">Cancelar</button>
+    </div>
+  </div>
+
+  <div class="overlay" id="buyOverlay" style="z-index:35">
+    <div class="sheet" role="dialog" aria-label="Registrar compra">
+      <h3>🧾 Registrar compra</h3>
+      <label for="buyProd">Producto</label>
+      <select id="buyProd"></select>
+      <div id="buyOtherWrap" style="display:none">
+        <label for="buyDesc">¿En qué fue el gasto?</label>
+        <input id="buyDesc" type="text" maxlength="60" placeholder="Ej. Bolsas, pasajes, renta">
+      </div>
+      <div id="buyQtyWrap">
+        <label for="buyQty">Cantidad de piezas</label>
+        <input id="buyQty" type="number" inputmode="numeric" min="1" step="1" placeholder="Ej. 24">
+      </div>
+      <label for="buyCost" id="buyCostLbl">Costo por pieza ($)</label>
+      <input id="buyCost" type="number" inputmode="decimal" min="0" step="0.01" placeholder="Ej. 16.50">
+      <p class="hint" id="buyHint">Las piezas se suman al inventario y el costo se guarda en el producto.</p>
+      <div class="total"><span>Total gastado</span><span id="buyTotal">$0</span></div>
+      <div class="err-msg" id="buyErr"></div>
+      <button type="button" class="send" id="buySave">Guardar compra</button>
+      <button type="button" class="close" id="buyClose">Cancelar</button>
+    </div>
+  </div>
+
+  <div class="overlay" id="finOverlay" style="z-index:35">
+    <div class="sheet" role="dialog" aria-label="Ventas y gastos">
+      <h3>📊 Ventas y gastos</h3>
+      <div class="periods" id="periods">
+        <button type="button" class="pill" data-p="day">Hoy</button>
+        <button type="button" class="pill" data-p="week">7 días</button>
+        <button type="button" class="pill" data-p="month">Este mes</button>
+        <button type="button" class="pill" data-p="all">Todo</button>
+      </div>
+      <div class="fin-cards" id="finCards"></div>
+      <div class="icat">Ventas por persona</div>
+      <div class="fin-cards" id="whoCards"></div>
+      <div class="hint" id="finNote"></div>
+      <div class="icat">Ventas por día</div>
+      <div class="periods" id="weekTabs">
+        <button type="button" class="pill active" data-w="0">Esta semana</button>
+        <button type="button" class="pill" data-w="1">Semana pasada</button>
+      </div>
+      <div id="weekBox"></div>
+      <div class="icat">Movimientos</div>
+      <div class="periods" id="whoTabs">
+        <button type="button" class="pill active" data-who="all">Todos</button>
+        <button type="button" class="pill" data-who="jefe">👔 Jefe</button>
+        <button type="button" class="pill" data-who="vendedor">🛒 Vendedor</button>
+      </div>
+      <div id="finList"></div>
+      <button type="button" class="send" id="finCsv">⬇️ Exportar movimientos (CSV)</button>
+      <button type="button" class="close" id="finClose">Cerrar</button>
+    </div>
+  </div>
+
+  <div class="overlay" id="pinOverlay" style="z-index:50;align-items:center;padding:14px">
+    <div class="sheet" role="dialog" aria-label="PIN" style="max-width:380px;border-radius:28px">
+      <h3 id="pinTitle">PIN</h3>
+      <p id="pinHelp" style="margin:0 0 8px"></p>
+      <input id="pinInput" type="password" inputmode="numeric" autocomplete="off" placeholder="PIN" maxlength="12">
+      <div class="err-msg" id="pinErr"></div>
+      <button type="button" class="send" id="pinOk">Aceptar</button>
+      <button type="button" class="close" id="pinCancel">Cancelar</button>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script id="pubStock" type="application/json">{"agotados":[]}</script>
+  <script>
+    const menuData = [
+      {
+        id: "bebidas",
+        title: "Bebidas",
+        icon: "🥤",
+        items: [
+          { emoji: "🥤", name: "Coca-Cola", price: 22, hot: false },
+          { emoji: "🟢", name: "Sprite", price: 22, hot: false },
+          { emoji: "⚡", name: "Mountain Dew", price: 25, hot: false },
+          { emoji: "🍓", name: "Fanta Fresa", price: 25, hot: true },
+          { emoji: "🍇", name: "Fanta Uva", price: 25, hot: false },
+          { emoji: "🍍", name: "Fanta Piña", price: 25, hot: false },
+          { emoji: "🔴", name: "Dr Pepper Original", price: 22, hot: false },
+          { emoji: "🍓", name: "Dr Pepper Fresa", price: 25, hot: false },
+          { emoji: "🥥", name: "Dr Pepper Coco", price: 25, hot: false },
+          { emoji: "🍦", name: "Dr Pepper Crema", price: 25, hot: false },
+          { emoji: "🥭", name: "Boing", price: 25, hot: false },
+          { emoji: "🧃", name: "Capri Sun", price: 15, hot: true },
+          { emoji: "💧", name: "Blanquita 600 ml", price: 15, hot: true },
+          { emoji: "💦", name: "Agua Member", price: 10, hot: true },
+          { emoji: "🥛", name: "Santa Clara", price: 10, hot: true }
+        ]
+      },
+      {
+        id: "frituras",
+        title: "Frituras",
+        icon: "🍟",
+        items: [
+          { emoji: "🥔", name: "Sabritas", price: 25, hot: false },
+          { emoji: "🔺", name: "Doritos", price: 25, hot: false },
+          { emoji: "🔥", name: "Cheetos Flamin’", price: 25, hot: false },
+          { emoji: "🌀", name: "Cheetos Torciditos", price: 25, hot: false },
+          { emoji: "🍟", name: "Chips", price: 25, hot: false },
+          { emoji: "🌽", name: "Runners", price: 25, hot: false },
+          { emoji: "🌶️", name: "Takis", price: 20, hot: true },
+          { emoji: "🌶️", name: "Rancheritos", price: 20, hot: true },
+          { emoji: "🥨", name: "Fritos", price: 15, hot: true },
+          { emoji: "🍥", name: "Churrumais", price: 15, hot: true },
+          { emoji: "💧", name: "Lagrimitas", price: 15, hot: true },
+          { emoji: "🧀", name: "Cuadritos", price: 15, hot: true },
+          { emoji: "🧀", name: "Cheetos Caseros", price: 15, hot: true }
+        ]
+      },
+      {
+        id: "galletas",
+        title: "Galletas",
+        icon: "🍪",
+        items: [
+          { emoji: "🍪", name: "Polvorones", price: 12, hot: true },
+          { emoji: "🍪", name: "Canelitas", price: 12, hot: true },
+          { emoji: "🍪", name: "Emperador", price: 12, hot: true },
+          { emoji: "🍫", name: "Triki Trakes", price: 12, hot: true },
+          { emoji: "🍪", name: "Emperador Grande", price: 25, hot: false },
+          { emoji: "🍫", name: "Chokis", price: 25, hot: false },
+          { emoji: "🌈", name: "Arcoíris", price: 25, hot: false }
+        ]
+      },
+      {
+        id: "dulces",
+        title: "Dulces",
+        icon: "🍭",
+        items: [
+          { emoji: "🧸", name: "Gomitas chica", price: 15, hot: false },
+          { emoji: "🧸", name: "Gomitas grande", price: 20, hot: false },
+          { emoji: "🌹", name: "Mazapán", price: 7, hot: true },
+          { emoji: "🌶️", name: "Pulparindo", price: 7, hot: true },
+          { emoji: "🥜", name: "Chocolate Nugs", price: 10, hot: true },
+          { emoji: "🌹", name: "Mazapán Chico", price: 12, hot: true },
+          { emoji: "🍫", name: "Snickers", price: 30, hot: false }
+        ]
+      }
+    ];
+
+    const filters = document.getElementById("filters");
+    const menu = document.getElementById("menu");
+    const filtersList = [
+      { id: "todos", label: "Todo" },
+      { id: "bebidas", label: "Bebidas" },
+      { id: "frituras", label: "Frituras" },
+      { id: "galletas", label: "Galletas" },
+      { id: "dulces", label: "Dulces" }
+    ];
+
+    let activeFilter = "todos";
+
+    function renderFilters() {
+      filters.innerHTML = filtersList.map(filter =>
+        `<button class="filter-btn ${filter.id === activeFilter ? "active" : ""}" data-filter="${filter.id}">${filter.label}</button>`
+      ).join("");
+    }
+
+    function renderMenu() {
+      menu.innerHTML = menuData.map(section => {
+        const visible = activeFilter === "todos" || activeFilter === section.id;
+        return `
+          <section class="menu-section ${visible ? "" : "hidden"}" data-section="${section.id}">
+            <div class="section-label">${section.icon} ${section.title}</div>
+            <div class="cards">
+              ${section.items.map(item => `
+                <div class="card ${item.hot ? "hot" : ""} ${cart[item.key] ? "sel" : ""}" data-emoji="${item.emoji}" data-key="${item.key}">
+                  <span class="emoji">${item.emoji}</span>
+                  <span class="name">${item.name}</span>
+                  <span class="price">$${item.price}</span>
+                  <div><span class="stk" data-stk="${item.key}"></span></div>
+                  <div class="qty" data-key="${item.key}">
+                    <button type="button" class="qb" data-act="minus" aria-label="Quitar uno">−</button>
+                    <span class="qn">${cart[item.key] || 0}</span>
+                    <button type="button" class="qb" data-act="plus" aria-label="Agregar uno">+</button>
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </section>
+        `;
+      }).join("");
+      updateStockBadges();
+    }
+
+    function attachCardClick() {
+      document.querySelectorAll(".card").forEach(card => {
+        card.addEventListener("click", function () {
+          if (this.classList.contains("out")) { toast("Agotado"); return; }
+          this.classList.remove("pop");
+          void this.offsetWidth;
+          this.classList.add("pop");
+
+          const rect = this.getBoundingClientRect();
+          for (let i = 0; i < 7; i++) {
+            const spark = document.createElement("div");
+            spark.className = "spark";
+            spark.textContent = i % 2 === 0 ? "⭐" : this.dataset.emoji;
+            spark.style.left = `${rect.left + rect.width / 2}px`;
+            spark.style.top = `${rect.top + rect.height / 2}px`;
+            spark.style.setProperty("--x", `${(Math.random() * 200) - 100}px`);
+            spark.style.setProperty("--y", `${(Math.random() * -180) - 30}px`);
+            document.body.appendChild(spark);
+            setTimeout(() => spark.remove(), 850);
+          }
+        });
+      });
+    }
+
+    function attachFilters() {
+      document.querySelectorAll(".filter-btn").forEach(button => {
+        button.addEventListener("click", () => {
+          activeFilter = button.dataset.filter;
+          renderFilters();
+          renderMenu();
+          attachCardClick();
+        });
+      });
+    }
+
+    function renderConfetti() {
+      const confetti = document.getElementById("confetti");
+      const emojis = ["🍬","⭐","🍭","✨","🍫","🎈"];
+      for (let i = 0; i < 18; i++) {
+        const item = document.createElement("span");
+        item.textContent = emojis[i % emojis.length];
+        item.style.left = `${(i * 6.4) % 100}%`;
+        item.style.animationDuration = `${9 + (i % 6) * 2}s`;
+        item.style.animationDelay = `${-i * 0.8}s`;
+        confetti.appendChild(item);
+      }
+    }
+
+    /* ===== Productos agregados manualmente (se guardan en este navegador) ===== */
+    let custom = [];
+    try { custom = JSON.parse(localStorage.getItem("cd_custom") || "[]") || []; } catch (e) { custom = []; }
+    custom.forEach(c => {
+      const sec = menuData.find(x => x.id === c.cat);
+      if (!sec || !c.name || sec.items.some(i => i.name.toLowerCase() === String(c.name).toLowerCase())) return;
+      sec.items.push({ emoji: c.emoji || sec.icon, name: c.name, price: Number(c.price) || 0, hot: false, custom: true });
+    });
+
+    const products = {};
+    menuData.forEach(section => section.items.forEach((item, i) => {
+      item.key = section.id + "-" + i;
+      products[item.key] = item;
+    }));
+    const cart = {};
+    const WA = "528998737533";
+
+    function totals() {
+      let count = 0, total = 0;
+      Object.keys(cart).forEach(k => { count += cart[k]; total += cart[k] * products[k].price; });
+      return { count, total };
+    }
+
+    function updateBar() {
+      const t = totals();
+      document.getElementById("cartBar").classList.toggle("show", t.count > 0);
+      document.getElementById("cartInfo").textContent = `🛒 ${t.count} ${t.count === 1 ? "producto" : "productos"} · $${t.total}`;
+      document.getElementById("orderTotal").textContent = `$${t.total}`;
+    }
+
+    function renderOrder() {
+      const keys = Object.keys(cart);
+      document.getElementById("orderList").innerHTML = keys.map(k => `
+        <div class="row">
+          <span class="rn">${products[k].emoji} ${products[k].name}</span>
+          <div class="qty" data-key="${k}">
+            <button type="button" class="qb" data-act="minus" aria-label="Quitar uno">−</button>
+            <span class="qn">${cart[k]}</span>
+            <button type="button" class="qb" data-act="plus" aria-label="Agregar uno">+</button>
+          </div>
+          <span class="rp">$${cart[k] * products[k].price}</span>
+        </div>
+      `).join("");
+      if (!keys.length) closeCart();
+    }
+
+    function setQty(key, q) {
+      if (q <= 0) delete cart[key]; else cart[key] = Math.min(q, 99);
+      document.querySelectorAll(`.card[data-key="${key}"]`).forEach(card => {
+        card.querySelector(".qn").textContent = cart[key] || 0;
+        card.classList.toggle("sel", !!cart[key]);
+        refreshCard(card);
+      });
+      updateBar();
+      if (document.getElementById("overlay").classList.contains("show")) renderOrder();
+      scheduleHold();
+    }
+
+    function openCart() { renderOrder(); document.getElementById("overlay").classList.add("show"); }
+    function closeCart() { document.getElementById("overlay").classList.remove("show"); }
+
+    document.addEventListener("click", e => {
+      const b = e.target.closest(".qb");
+      if (!b) return;
+      const key = b.closest("[data-key]").dataset.key;
+      const plus = b.dataset.act === "plus";
+      if (plus) {
+        const v = availOf(key), real = stockOf(key);
+        if (v !== null && (cart[key] || 0) >= v) {
+          toast(v > 0 ? "Solo hay " + v + " disponibles" : (real > 0 ? "Otra persona lo tiene apartado ahora. Intenta en unos minutos" : "Agotado"));
+          return;
+        }
+      }
+      setQty(key, (cart[key] || 0) + (plus ? 1 : -1));
+    });
+    document.getElementById("openCart").addEventListener("click", openCart);
+    document.getElementById("closeCart").addEventListener("click", closeCart);
+    document.getElementById("overlay").addEventListener("click", e => { if (e.target.id === "overlay") closeCart(); });
+
+    document.getElementById("sendOrder").addEventListener("click", () => {
+      const nameEl = document.getElementById("custName");
+      const name = nameEl.value.trim();
+      const place = document.getElementById("custPlace").value.trim();
+      const err = document.getElementById("errMsg");
+      if (!name) {
+        nameEl.classList.add("err");
+        err.textContent = "Escribe tu nombre para enviar el pedido.";
+        nameEl.focus();
+        return;
+      }
+      nameEl.classList.remove("err");
+      err.textContent = "";
+      const t = totals();
+      const lines = Object.keys(cart).map(k => `• ${cart[k]} x ${products[k].name} - $${cart[k] * products[k].price}`);
+      let text = `Hola, soy ${name}. Quiero hacer este pedido:\n${lines.join("\n")}\n\nTotal: $${t.total}`;
+      if (place) text += `\nEdificio / lugar: ${place}`;
+      const waUrl = `https://wa.me/${WA}?text=${encodeURIComponent(text)}`;
+      const w = window.open("", "_blank");
+      placeOrder().then(res => {
+        if (res === "short") { if (w) w.close(); return; }
+        if (w) w.location.href = waUrl; else location.href = waUrl;
+        if (res === "ok") {
+          Object.keys(cart).forEach(k => setQty(k, 0));
+          closeCart();
+          toast("Pedido enviado ✅");
+        }
+      });
+    });
+
+    /* ===== INVENTARIO (se guarda en este navegador) ===== */
+    const LOW = 5;
+    const catOf = {};
+    menuData.forEach(section => section.items.forEach(item => { catOf[item.key] = section.title; }));
+    let stock = {};
+    try { stock = JSON.parse(localStorage.getItem("cd_stock") || "{}") || {}; } catch (e) { stock = {}; }
+    let role = null;
+
+    function toast(msg) {
+      const t = document.getElementById("toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      clearTimeout(toast.timer);
+      toast.timer = setTimeout(() => t.classList.remove("show"), 2400);
+    }
+    function saveStock() {
+      try { localStorage.setItem("cd_stock", JSON.stringify(stock)); }
+      catch (e) { toast("No se pudo guardar en este navegador"); }
+      schedulePush();
+    }
+    let PUB_OUT = [];
+    try { PUB_OUT = JSON.parse(document.getElementById("pubStock").textContent).agotados || []; } catch (e) { PUB_OUT = []; }
+    function stockOf(key) {
+      const name = products[key].name;
+      const v = stock[name];
+      if (typeof v === "number") return v;
+      return (!serverOk && PUB_OUT.indexOf(name) >= 0) ? 0 : null;
+    }
+
+    /* ===== SINCRONIZACIÓN: el inventario vive en el servidor y lo ven todos ===== */
+    const API = "/api/stock";
+    let serverStock = null, serverOk = false, pushTimer = null, pushing = false, memKey = "";
+    const CART_ID = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : (Math.random().toString(36).slice(2) + Date.now().toString(36) + Math.random().toString(36).slice(2));
+    let heldOthers = {}, holdTimer = null, holdBeat = null;
+    function availOf(key) {
+      const v = stockOf(key);
+      if (v === null) return null;
+      return Math.max(0, v - (heldOthers[products[key].name] || 0));
+    }
+    function scheduleHold() {
+      if (role) return;
+      clearTimeout(holdTimer);
+      holdTimer = setTimeout(sendHold, 500);
+      clearInterval(holdBeat);
+      holdBeat = Object.keys(cart).length ? setInterval(sendHold, 5 * 60 * 1000) : null;
+    }
+    async function sendHold() {
+      holdTimer = null;
+      if (role) return;
+      const items = {};
+      Object.keys(cart).forEach(k => { items[products[k].name] = cart[k]; });
+      try {
+        const r = await fetch(API + "?action=hold", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ cart: CART_ID, items }) });
+        if (!r.ok) return;
+        const d = await r.json();
+        serverOk = true;
+        heldOthers = d.held || {};
+        if (d.stock) adopt(d.stock);
+        Object.keys(cart).forEach(k => {
+          const n = products[k].name;
+          if (d.stock && typeof d.stock[n] === "number" && (d.granted[n] || 0) < cart[k]) {
+            const g = d.granted[n] || 0;
+            toast(g ? "Solo quedan " + g + " de " + n : n + " se agotó o lo tiene apartado alguien más");
+            setQty(k, g);
+          }
+        });
+        updateStockBadges();
+      } catch (e) { /* sin servidor: no se aparta nada */ }
+    }
+    async function placeOrder() {
+      if (role) return "skip";
+      const items = {};
+      Object.keys(cart).forEach(k => { items[products[k].name] = cart[k]; });
+      try {
+        const r = await fetch(API + "?action=order", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ cart: CART_ID, items }) });
+        if (r.status === 409) {
+          const d = await r.json();
+          heldOthers = d.held || {};
+          if (d.stock) adopt(d.stock);
+          toast("Ya no hay suficiente de: " + d.short.map(x => x.name).join(", ") + ". Ajusté tu pedido");
+          updateStockBadges();
+          return "short";
+        }
+        if (!r.ok) return "skip";
+        const d = await r.json();
+        heldOthers = d.held || {};
+        if (d.stock) adopt(d.stock);
+        return "ok";
+      } catch (e) { return "skip"; }
+    }
+    function getKey() { let v = ""; try { v = localStorage.getItem("cd_key") || ""; } catch (e) {} return v || memKey; }
+    function setKey(v) { memKey = v; try { localStorage.setItem("cd_key", v); } catch (e) {} }
+    const sameMap = (a, b) => JSON.stringify(Object.keys(a).sort().map(k => [k, a[k]])) === JSON.stringify(Object.keys(b).sort().map(k => [k, b[k]]));
+    function typing() {
+      const a = document.activeElement;
+      return !!(a && a.tagName === "INPUT" && a.closest("#invOverlay,#vendOverlay,#addOverlay,#buyOverlay"));
+    }
+    function adopt(map) {
+      if (typing() || pushTimer) return;
+      serverStock = Object.assign({}, map);
+      if (sameMap(map, stock)) return;
+      stock = Object.assign({}, map);
+      if (role) { try { localStorage.setItem("cd_stock", JSON.stringify(stock)); } catch (e) {} }
+      if (document.getElementById("invOverlay").classList.contains("show")) renderInv();
+      if (document.getElementById("vendOverlay").classList.contains("show")) renderVend();
+    }
+    async function pull() {
+      try {
+        const hd = {}; const k0 = role ? getKey() : ""; if (k0) hd["x-key"] = k0;
+        const r = await fetch(API + "?cart=" + encodeURIComponent(CART_ID), { cache: "no-store", headers: hd });
+        if (!r.ok) throw new Error("http");
+        const d = await r.json();
+        serverOk = true;
+        heldOthers = d.held || {};
+        if (role && Array.isArray(d.log)) mergeLog(d.log);
+        if (pushTimer || pushing) return;
+        if (!d.init && Object.keys(stock).length) { serverStock = {}; if (role) schedulePush(); }
+        else adopt(d.stock || {});
+      } catch (e) { /* sin servidor: se queda con lo local */ }
+      updateStockBadges();
+    }
+    function schedulePush() {
+      if (!role) return;
+      clearTimeout(pushTimer);
+      pushTimer = setTimeout(push, 700);
+    }
+    async function push() {
+      pushTimer = null;
+      if (!role) return;
+      if (pushing) { schedulePush(); return; }
+      if (serverStock === null) { await pull(); if (serverStock === null) { toast("Sin conexión: el cambio quedó solo en este dispositivo"); return; } }
+      const base = serverStock, set = {}, del = [];
+      Object.keys(stock).forEach(n => { if (typeof stock[n] === "number" && stock[n] !== base[n]) set[n] = stock[n]; });
+      Object.keys(base).forEach(n => { if (!(n in stock)) del.push(n); });
+      if (!Object.keys(set).length && !del.length) return;
+      let key = getKey();
+      if (!key) {
+        key = (prompt("Escribe la clave de edición del inventario (la que pusiste en Netlify como INV_KEY):") || "").trim();
+        if (!key) { toast("Sin clave: los cambios solo quedan en este dispositivo"); return; }
+      }
+      pushing = true;
+      try {
+        const r = await fetch(API, { method: "POST", headers: { "content-type": "application/json", "x-key": key }, body: JSON.stringify({ set, del }) });
+        if (r.status === 401) { setKey(""); toast("Clave incorrecta. Haz otro cambio para intentar de nuevo"); return; }
+        if (!r.ok) throw new Error("http");
+        const hadKey = !!getKey(); setKey(key); if (!hadKey) setTimeout(pull, 200);
+        const d = await r.json();
+        serverOk = true;
+        adopt(d.stock || {});
+        updateStockBadges();
+      } catch (e) { toast("Sin conexión: el cambio quedó solo en este dispositivo"); }
+      finally { pushing = false; }
+    }
+    /* ===== Ventas/compras por diferencia + registro compartido ===== */
+    let opsQ = { add: {}, logAdd: [], logDel: [] }, opsTimer = null, opsBusy = false;
+    let logSynced = new Set();
+    try { logSynced = new Set(JSON.parse(localStorage.getItem("cd_logsynced") || "[]")); } catch (e) {}
+    function saveSynced() { try { localStorage.setItem("cd_logsynced", JSON.stringify([...logSynced].slice(-6000))); } catch (e) {} }
+    function saveStockLocal() { try { localStorage.setItem("cd_stock", JSON.stringify(stock)); } catch (e) { toast("No se pudo guardar en este navegador"); } }
+    function queueOps(o) {
+      Object.keys(o.add || {}).forEach(n => { opsQ.add[n] = (opsQ.add[n] || 0) + o.add[n]; if (serverStock && typeof stock[n] === "number") serverStock[n] = stock[n]; });
+      (o.logAdd || []).forEach(r => opsQ.logAdd.push(r));
+      (o.logDel || []).forEach(i => opsQ.logDel.push(i));
+      clearTimeout(opsTimer);
+      opsTimer = setTimeout(flushOps, 300);
+    }
+    function mergeLog(srv) {
+      const srvIds = new Set(srv.map(r => r.id));
+      const mine = new Set(opsQ.logAdd.map(r => r.id));
+      const keep = [];
+      log.forEach(r => {
+        if (srvIds.has(r.id) || mine.has(r.id)) keep.push(r);
+        else if (!logSynced.has(r.id)) { keep.push(r); opsQ.logAdd.push(r); } // registro viejo de este dispositivo: se sube una vez
+        // si ya estaba sincronizado y el servidor no lo tiene, otro dispositivo lo borró
+      });
+      const keepIds = new Set(keep.map(r => r.id));
+      srv.forEach(r => { if (!keepIds.has(r.id)) keep.push(r); });
+      srv.forEach(r => logSynced.add(r.id));
+      log = keep;
+      saveLog(true); saveSynced();
+      if (opsQ.logAdd.length || opsQ.logDel.length) { clearTimeout(opsTimer); opsTimer = setTimeout(flushOps, 300); }
+      const fo = document.getElementById("finOverlay"); if (fo && fo.classList.contains("show") && typeof renderFin === "function") renderFin();
+      const vo = document.getElementById("vendOverlay"); if (vo && vo.classList.contains("show")) renderVend();
+    }
+    async function flushOps() {
+      opsTimer = null;
+      if (!role) return;
+      if (opsBusy) { opsTimer = setTimeout(flushOps, 500); return; }
+      const q = opsQ;
+      if (!Object.keys(q.add).length && !q.logAdd.length && !q.logDel.length) return;
+      let key = getKey();
+      if (!key) {
+        key = (prompt("Escribe la clave de edición del inventario (la que pusiste en Netlify como INV_KEY):") || "").trim();
+        if (!key) { toast("Sin clave: los cambios solo quedan en este dispositivo"); return; }
+      }
+      opsQ = { add: {}, logAdd: [], logDel: [] };
+      opsBusy = true;
+      try {
+        const r = await fetch(API, { method: "POST", headers: { "content-type": "application/json", "x-key": key }, body: JSON.stringify(q) });
+        if (r.status === 401) { setKey(""); throw new Error("401"); }
+        if (!r.ok) throw new Error("http");
+        const hadKey = !!getKey(); setKey(key); if (!hadKey) setTimeout(pull, 200);
+        const d = await r.json();
+        serverOk = true;
+        q.logAdd.forEach(x => logSynced.add(x.id));
+        q.logDel.forEach(i => logSynced.delete(i));
+        saveSynced();
+        if (Array.isArray(d.log)) mergeLog(d.log);
+        adopt(d.stock || {});
+        updateStockBadges();
+      } catch (e) {
+        Object.keys(q.add).forEach(n => { opsQ.add[n] = (opsQ.add[n] || 0) + q.add[n]; });
+        opsQ.logAdd.unshift(...q.logAdd); opsQ.logDel.unshift(...q.logDel);
+        toast("Sin conexión: se enviará cuando haya internet");
+        clearTimeout(opsTimer); opsTimer = setTimeout(flushOps, 20000);
+      } finally { opsBusy = false; }
+    }
+    function refreshCard(card) {
+      const key = card.dataset.key, v = availOf(key), q = cart[key] || 0;
+      card.classList.toggle("out", v !== null && v <= 0);
+      const plus = card.querySelector('.qb[data-act="plus"]');
+      if (plus) plus.disabled = v !== null && q >= v;
+    }
+    function syncCards() {
+      Object.keys(cart).forEach(k => {
+        const v = availOf(k);
+        if (v !== null && cart[k] > v) setQty(k, Math.max(0, v));
+      });
+      document.querySelectorAll(".card[data-key]").forEach(refreshCard);
+    }
+    function updateStockBadges() {
+      syncCards();
+      document.querySelectorAll("[data-stk]").forEach(el => {
+        const v = stockOf(el.dataset.stk);
+        el.textContent = v === null ? "Stock: —" : (v === 0 ? "Agotado" : "Stock: " + v);
+        el.classList.toggle("low", v !== null && v <= LOW);
+      });
+    }
+    function updateInvSummary() {
+      let out = 0, low = 0, tracked = 0;
+      Object.keys(products).forEach(k => {
+        const v = stockOf(k);
+        if (v === null) return;
+        tracked++;
+        if (v === 0) out++; else if (v <= LOW) low++;
+      });
+      document.getElementById("invSum").innerHTML =
+        `Productos con stock capturado: ${tracked} de ${Object.keys(products).length}<br>` +
+        `🔴 Agotados: ${out} &nbsp; 🟠 Por acabarse (${LOW} o menos): ${low}` + todayLine() + weekHtml(0);
+    }
+    let cost = {}, log = [];
+    try { cost = JSON.parse(localStorage.getItem("cd_cost") || "{}") || {}; } catch (e) { cost = {}; }
+    try { log = JSON.parse(localStorage.getItem("cd_log") || "[]") || []; } catch (e) { log = []; }
+    function saveCost() { try { localStorage.setItem("cd_cost", JSON.stringify(cost)); } catch (e) { toast("No se pudo guardar en este navegador"); } }
+    function saveLog(quiet) { try { localStorage.setItem("cd_log", JSON.stringify(log)); } catch (e) { toast("No se pudo guardar en este navegador"); } }
+    function costOf(key) { const v = cost[products[key].name]; return typeof v === "number" ? v : null; }
+    const money = n => "$" + Number(n).toLocaleString("es-MX", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+    const esc = t => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+    function metaText(k) {
+      const p = products[k], c = costOf(k);
+      let t = "Venta " + money(p.price);
+      if (c !== null) {
+        const g = p.price - c;
+        t += ` · Costo ${money(c)} · Gana <span class="${g < 0 ? "neg" : ""}">${money(g)}</span>`;
+      } else {
+        t += " · Costo: sin capturar";
+      }
+      return t;
+    }
+    function renderInv() {
+      const q = document.getElementById("invSearch").value.trim().toLowerCase();
+      let html = "", last = "";
+      Object.keys(products).forEach(k => {
+        const p = products[k];
+        if (q && !p.name.toLowerCase().includes(q)) return;
+        if (catOf[k] !== last) { last = catOf[k]; html += `<div class="icat">${last}</div>`; }
+        const v = stockOf(k), c = costOf(k);
+        html += `<div class="irow ${v !== null && v <= LOW ? "low" : ""}" data-ikey="${k}">
+          <div class="itop"><span class="rn">${p.emoji} ${p.name}${p.custom ? '<span class="newtag">nuevo</span>' : ""}</span>${p.custom ? '<button type="button" class="idel" aria-label="Eliminar producto" title="Eliminar producto">🗑️</button>' : ""}</div>
+          <div class="imeta">${metaText(k)}</div>
+          <div class="ictl">
+            <label>Costo $<input class="icost" type="number" inputmode="decimal" min="0" step="0.01" value="${c === null ? "" : c}" placeholder="—"></label>
+            <span class="sp"></span>
+            <button type="button" class="ib" data-d="-1" aria-label="Quitar uno">−</button>
+            <input class="istk" type="number" inputmode="numeric" min="0" value="${v === null ? "" : v}" placeholder="—">
+            <button type="button" class="ib" data-d="1" aria-label="Agregar uno">+</button>
+          </div>
+        </div>`;
+      });
+      document.getElementById("invList").innerHTML = html || "<p>No hay resultados.</p>";
+      updateInvSummary();
+    }
+    function setStock(key, v) {
+      const name = products[key].name;
+      if (v === null) delete stock[name]; else stock[name] = Math.max(0, Math.floor(v));
+      saveStock();
+      updateStockBadges();
+      const row = document.querySelector(`.irow[data-ikey="${key}"]`);
+      if (row) {
+        const s = stockOf(key);
+        row.classList.toggle("low", s !== null && s <= LOW);
+        const inp = row.querySelector(".istk");
+        if (document.activeElement !== inp) inp.value = s === null ? "" : s;
+      }
+      updateInvSummary();
+    }
+    const g = id => document.getElementById(id);
+    function setRole(r) {
+      role = r;
+      if (r) { schedulePush(); pull(); }
+      document.body.classList.toggle("owner", r === "jefe");
+      document.body.classList.toggle("vend", r === "vendedor");
+      g("ownerBar").classList.toggle("show", r === "jefe");
+      g("vendBar").classList.toggle("show", r === "vendedor");
+      document.querySelector(".owner-wrap").style.display = r ? "none" : "";
+      g("sellBtn").style.display = r ? "block" : "none";
+      if (!r) ["invOverlay", "addOverlay", "buyOverlay", "finOverlay", "vendOverlay"].forEach(id => g(id).classList.remove("show"));
+    }
+    let memPin = null;
+    function getPin() {
+      let v = null;
+      try { v = localStorage.getItem("cd_pin"); } catch (e) {}
+      return v || memPin;
+    }
+    function setPin(v) {
+      memPin = v;
+      try { localStorage.setItem("cd_pin", v); }
+      catch (e) { toast("Este navegador no deja guardar el PIN: solo durará mientras la página esté abierta"); }
+    }
+    let pinCb = null;
+    function askPin(title, help, cb) {
+      document.getElementById("pinTitle").textContent = title;
+      document.getElementById("pinHelp").textContent = help;
+      const inp = document.getElementById("pinInput");
+      inp.value = "";
+      document.getElementById("pinErr").textContent = "";
+      pinCb = cb;
+      document.getElementById("pinOverlay").classList.add("show");
+      setTimeout(() => inp.focus(), 60);
+    }
+    function submitPin() {
+      const v = document.getElementById("pinInput").value.trim();
+      const msg = pinCb ? pinCb(v) : null;
+      if (msg) { document.getElementById("pinErr").textContent = msg; return; }
+      document.getElementById("pinOverlay").classList.remove("show");
+      pinCb = null;
+    }
+    document.getElementById("pinOk").addEventListener("click", submitPin);
+    document.getElementById("pinInput").addEventListener("keydown", e => { if (e.key === "Enter") submitPin(); });
+    document.getElementById("pinCancel").addEventListener("click", () => {
+      document.getElementById("pinOverlay").classList.remove("show");
+      pinCb = null;
+    });
+
+    /* ----- Roles: jefe y vendedor ----- */
+    let memPinV = null;
+    function getPinV() {
+      let v = null;
+      try { v = localStorage.getItem("cd_pin_v"); } catch (e) {}
+      return v || memPinV;
+    }
+    function setPinV(v) {
+      memPinV = v;
+      try { localStorage.setItem("cd_pin_v", v); }
+      catch (e) { toast("Este navegador no deja guardar el PIN del vendedor"); }
+    }
+    const validPin = v => /^\d{4,}$/.test(v);
+
+    g("ownerBtn").addEventListener("click", () => {
+      const pin = getPin();
+      if (!pin) {
+        askPin("Crea tu PIN de jefe", "Escribe al menos 4 números. Te lo pedirá cada vez que entres como jefe.", v => {
+          if (!validPin(v)) return "El PIN debe tener al menos 4 números.";
+          setPin(v);
+          setRole("jefe");
+          return null;
+        });
+        return;
+      }
+      askPin("Modo jefe", "Escribe tu PIN.", v => {
+        if (v !== pin) return "PIN incorrecto.";
+        setRole("jefe");
+        return null;
+      });
+    });
+    g("vendBtn").addEventListener("click", () => {
+      const pin = getPinV();
+      if (!pin) { toast("Todavía no hay PIN de vendedor. El jefe debe crearlo desde su inventario."); return; }
+      askPin("Modo vendedor", "Escribe el PIN del vendedor.", v => {
+        if (v !== pin) return "PIN incorrecto.";
+        setRole("vendedor");
+        return null;
+      });
+    });
+    g("exitOwner").addEventListener("click", () => setRole(null));
+    g("exitVend").addEventListener("click", () => setRole(null));
+    g("invPinV").addEventListener("click", () => {
+      askPin("PIN del vendedor", "Escribe el PIN que usará tu vendedor (mínimo 4 números, distinto al tuyo).", v => {
+        if (!validPin(v)) return "El PIN debe tener al menos 4 números.";
+        if (v === getPin()) return "Debe ser distinto a tu PIN de jefe.";
+        setPinV(v);
+        toast("PIN del vendedor guardado");
+        return null;
+      });
+    });
+
+    let vendTab = "stock";
+    function renderVend() {
+      document.querySelectorAll("#vendTabs .pill").forEach(b => b.classList.toggle("active", b.dataset.vt === vendTab));
+      const body = g("vendBody"), search = g("vendSearch");
+      search.style.display = vendTab === "stock" ? "" : "none";
+      if (vendTab === "stock") {
+        const q = search.value.trim().toLowerCase();
+        let html = "", last = "";
+        Object.keys(products).forEach(k => {
+          const p = products[k];
+          if (q && !p.name.toLowerCase().includes(q)) return;
+          if (catOf[k] !== last) { last = catOf[k]; html += `<div class="icat">${last}</div>`; }
+          const v = stockOf(k);
+          const label = v === null ? "—" : (v === 0 ? "Agotado" : v);
+          html += `<div class="irow ${v !== null && v <= LOW ? "low" : ""}"><div class="itop"><span class="rn">${p.emoji} ${p.name}</span><b>${label}</b></div></div>`;
+        });
+        body.innerHTML = html || "<p>No hay resultados.</p>";
+      } else {
+        const from = periodStart("day");
+        const rows = log.filter(r => r.type === "venta" && r.by === "vendedor" && r.t >= from).sort((a, b) => b.t - a.t);
+        let total = 0;
+        rows.forEach(r => { total += r.total; });
+        body.innerHTML = `<div class="today"><b>Total vendido hoy:</b> ${money(total)}</div>` +
+          (rows.map(r => `<div class="mrow"><span>💰</span><div class="mi">${r.qty} x ${esc(r.name)}<small>${fmtDate(r.t)}</small></div><span class="mt g">+${money(r.total)}</span></div>`).join("") ||
+          "<p>Todavía no hay ventas hoy.</p>");
+      }
+    }
+    g("openVend").addEventListener("click", () => { vendTab = "stock"; g("vendSearch").value = ""; renderVend(); g("vendOverlay").classList.add("show"); });
+    g("vendClose").addEventListener("click", () => g("vendOverlay").classList.remove("show"));
+    g("vendOverlay").addEventListener("click", e => { if (e.target.id === "vendOverlay") e.target.classList.remove("show"); });
+    g("vendSearch").addEventListener("input", renderVend);
+    g("vendTabs").addEventListener("click", e => {
+      const b = e.target.closest(".pill");
+      if (!b) return;
+      vendTab = b.dataset.vt;
+      renderVend();
+    });
+    document.getElementById("openInv").addEventListener("click", () => {
+      document.getElementById("invSearch").value = "";
+      renderInv();
+      document.getElementById("invOverlay").classList.add("show");
+    });
+    document.getElementById("invClose").addEventListener("click", () => document.getElementById("invOverlay").classList.remove("show"));
+    document.getElementById("invOverlay").addEventListener("click", e => { if (e.target.id === "invOverlay") e.target.classList.remove("show"); });
+    document.getElementById("invSearch").addEventListener("input", renderInv);
+    document.getElementById("invList").addEventListener("click", e => {
+      const del = e.target.closest(".idel");
+      if (del) { deleteCustom(del.closest(".irow").dataset.ikey); return; }
+      const b = e.target.closest(".ib");
+      if (!b) return;
+      const key = b.closest(".irow").dataset.ikey;
+      setStock(key, (stockOf(key) || 0) + Number(b.dataset.d));
+    });
+    document.getElementById("invList").addEventListener("input", e => {
+      if (!e.target.classList.contains("istk")) return;
+      const key = e.target.closest(".irow").dataset.ikey;
+      const raw = e.target.value.trim();
+      setStock(key, raw === "" ? null : Number(raw));
+    });
+    document.getElementById("invPin").addEventListener("click", () => {
+      askPin("Cambiar PIN", "Escribe tu nuevo PIN (mínimo 4 números).", v => {
+        if (!/^\d{4,}$/.test(v)) return "El PIN debe tener al menos 4 números.";
+        setPin(v);
+        toast("PIN actualizado");
+        return null;
+      });
+    });
+    function downloadCsv(rows, filename) {
+      const csv = "\ufeff" + rows.map(r => r.map(c => `"${String(c).replace(/"/g, '""')}"`).join(",")).join("\r\n");
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+    document.getElementById("pubOut").addEventListener("click", async () => {
+      const out = Object.keys(products).filter(k => stockOf(k) === 0).map(k => products[k].name);
+      try {
+        const r = await fetch(location.href.split("#")[0], { cache: "no-store" });
+        if (!r.ok) throw new Error("http");
+        const html = await r.text();
+        const re = /(<script id="pubStock" type="application\/json">)[\s\S]*?(<\/script>)/;
+        if (!re.test(html)) throw new Error("nomark");
+        const json = JSON.stringify({ agotados: out }).replace(/</g, "\\u003c");
+        const nuevo = html.replace(re, (m, a, b) => a + json + b);
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(new Blob([nuevo], { type: "text/html;charset=utf-8" }));
+        a.download = "index.html";
+        document.body.appendChild(a); a.click(); a.remove();
+        toast(out.length + " agotado(s). Sube el index.html a Netlify");
+      } catch (e) {
+        toast("Abre la página desde tu link de Netlify para publicar");
+      }
+    });
+    document.getElementById("invCsv").addEventListener("click", () => {
+      const rows = [["Producto", "Categoría", "Precio de venta", "Costo", "Stock"]];
+      Object.keys(products).forEach(k => {
+        const v = stockOf(k), c = costOf(k);
+        rows.push([products[k].name, catOf[k], products[k].price, c === null ? "" : c, v === null ? "" : v]);
+      });
+      downloadCsv(rows, "inventario-chico-dulce.csv");
+    });
+    document.getElementById("invList").addEventListener("input", e => {
+      if (!e.target.classList.contains("icost")) return;
+      const row = e.target.closest(".irow"), key = row.dataset.ikey, raw = e.target.value.trim();
+      if (raw === "" || isNaN(Number(raw))) delete cost[products[key].name];
+      else cost[products[key].name] = Math.max(0, Number(raw));
+      saveCost();
+      row.querySelector(".imeta").innerHTML = metaText(key);
+    });
+    document.getElementById("sellBtn").addEventListener("click", () => {
+      const keys = Object.keys(cart);
+      if (!keys.length) return;
+      const now = Date.now();
+      let total = 0;
+      const ops = { add: {}, logAdd: [] };
+      keys.forEach(k => {
+        const p = products[k], q = cart[k], v = stockOf(k);
+        if (v !== null) { stock[p.name] = Math.max(0, v - q); ops.add[p.name] = -q; }
+        const entry = { id: now + "-" + Math.random().toString(36).slice(2, 7) + "-" + k, t: now, type: "venta", name: p.name, qty: q, unit: p.price, total: p.price * q, cost: costOf(k), by: role };
+        log.push(entry); ops.logAdd.push(entry);
+        total += p.price * q;
+      });
+      saveStockLocal();
+      saveLog();
+      queueOps(ops);
+      updateStockBadges();
+      keys.forEach(k => setQty(k, 0));
+      closeCart();
+      toast("Venta de " + money(total) + " registrada ✅");
+    });
+
+    /* ----- Agregar / eliminar producto manual ----- */
+    function saveCustom() { try { localStorage.setItem("cd_custom", JSON.stringify(custom)); } catch (e) { toast("No se pudo guardar en este navegador"); } }
+    const cleanTxt = t => String(t || "").replace(/[<>&"]/g, "").trim();
+    function refreshMenuUI() { renderMenu(); attachCardClick(); updateBar(); }
+    function reindexProducts() {
+      const byName = {};
+      Object.keys(cart).forEach(k => { if (products[k]) byName[products[k].name] = cart[k]; delete cart[k]; });
+      Object.keys(products).forEach(k => delete products[k]);
+      Object.keys(catOf).forEach(k => delete catOf[k]);
+      menuData.forEach(sec => sec.items.forEach((it, i) => {
+        it.key = sec.id + "-" + i; products[it.key] = it; catOf[it.key] = sec.title;
+        if (byName[it.name]) cart[it.key] = byName[it.name];
+      }));
+    }
+    function openAdd() {
+      document.getElementById("addCat").innerHTML = menuData.map(sec => `<option value="${sec.id}">${sec.icon} ${sec.title}</option>`).join("");
+      ["addEmoji", "addPrice", "addName", "addCost", "addStock"].forEach(id => { document.getElementById(id).value = ""; });
+      document.getElementById("addErr").textContent = "";
+      document.getElementById("addOverlay").classList.add("show");
+      document.getElementById("addName").focus();
+    }
+    function saveNewProduct() {
+      const err = document.getElementById("addErr");
+      const catId = document.getElementById("addCat").value;
+      const sec = menuData.find(x => x.id === catId);
+      const name = cleanTxt(document.getElementById("addName").value);
+      const emoji = cleanTxt(document.getElementById("addEmoji").value) || sec.icon;
+      const priceRaw = document.getElementById("addPrice").value.trim();
+      const costRaw = document.getElementById("addCost").value.trim();
+      const stockRaw = document.getElementById("addStock").value.trim();
+      const price = Number(priceRaw);
+      if (!name) { err.textContent = "Escribe el nombre del producto."; return; }
+      if (Object.keys(products).some(k => products[k].name.toLowerCase() === name.toLowerCase())) { err.textContent = "Ya existe un producto con ese nombre."; return; }
+      if (priceRaw === "" || !(price > 0)) { err.textContent = "Escribe el precio de venta."; return; }
+      if (costRaw !== "" && !(Number(costRaw) >= 0)) { err.textContent = "El costo no es válido."; return; }
+      if (stockRaw !== "" && !(Number(stockRaw) >= 0)) { err.textContent = "El stock no es válido."; return; }
+      const item = { emoji: emoji, name: name, price: price, hot: false, custom: true };
+      item.key = sec.id + "-" + sec.items.length;
+      sec.items.push(item);
+      products[item.key] = item;
+      catOf[item.key] = sec.title;
+      custom.push({ cat: sec.id, emoji: emoji, name: name, price: price });
+      saveCustom();
+      if (costRaw !== "") { cost[name] = Number(costRaw); saveCost(); }
+      if (stockRaw !== "") { stock[name] = Math.floor(Number(stockRaw)); saveStock(); }
+      refreshMenuUI();
+      updateStockBadges();
+      renderInv();
+      document.getElementById("addOverlay").classList.remove("show");
+      toast("Producto agregado: " + emoji + " " + name);
+    }
+    function deleteCustom(key) {
+      const it = products[key];
+      if (!it || !it.custom) return;
+      if (!confirm("¿Eliminar \"" + it.name + "\" del menú y del inventario?\nEl historial de ventas y gastos se conserva.")) return;
+      const sec = menuData.find(x => key.indexOf(x.id + "-") === 0);
+      sec.items = sec.items.filter(x => x !== it);
+      custom = custom.filter(c => c.name !== it.name);
+      delete stock[it.name]; delete cost[it.name];
+      saveCustom(); saveStock(); saveCost();
+      reindexProducts();
+      refreshMenuUI();
+      updateStockBadges();
+      renderInv();
+      toast("Producto eliminado");
+    }
+    document.getElementById("invAdd").addEventListener("click", openAdd);
+    document.getElementById("addSave").addEventListener("click", saveNewProduct);
+    document.getElementById("addClose").addEventListener("click", () => document.getElementById("addOverlay").classList.remove("show"));
+    document.getElementById("addOverlay").addEventListener("click", e => { if (e.target.id === "addOverlay") e.target.classList.remove("show"); });
+    document.getElementById("addName").addEventListener("keydown", e => { if (e.key === "Enter") saveNewProduct(); });
+
+    /* ----- Registrar compra (gasto) ----- */
+    const OTHER = "__otro__";
+    const $ = id => document.getElementById(id);
+    function fillBuySelect() {
+      let h = '<option value="">Elige un producto...</option><option value="' + OTHER + '">➕ Otro gasto (sin producto)</option>';
+      menuData.forEach(sec => {
+        h += '<optgroup label="' + sec.title + '">';
+        sec.items.forEach(it => { h += '<option value="' + it.key + '">' + it.emoji + " " + it.name + "</option>"; });
+        h += "</optgroup>";
+      });
+      $("buyProd").innerHTML = h;
+    }
+    function buyUpdate() {
+      const other = $("buyProd").value === OTHER;
+      $("buyOtherWrap").style.display = other ? "" : "none";
+      $("buyQtyWrap").style.display = other ? "none" : "";
+      $("buyHint").style.display = other ? "none" : "";
+      $("buyCostLbl").textContent = other ? "Monto ($)" : "Costo por pieza ($)";
+      const c = Number($("buyCost").value) || 0, q = other ? 1 : (Number($("buyQty").value) || 0);
+      $("buyTotal").textContent = money(c * q);
+    }
+    $("invBuy").addEventListener("click", () => {
+      fillBuySelect();
+      ["buyDesc", "buyQty", "buyCost"].forEach(id => { $(id).value = ""; });
+      $("buyErr").textContent = "";
+      buyUpdate();
+      $("buyOverlay").classList.add("show");
+    });
+    $("buyProd").addEventListener("change", () => {
+      const k = $("buyProd").value;
+      if (k && k !== OTHER && costOf(k) !== null) $("buyCost").value = costOf(k);
+      buyUpdate();
+    });
+    $("buyQty").addEventListener("input", buyUpdate);
+    $("buyCost").addEventListener("input", buyUpdate);
+    $("buyClose").addEventListener("click", () => $("buyOverlay").classList.remove("show"));
+    $("buyOverlay").addEventListener("click", e => { if (e.target.id === "buyOverlay") e.target.classList.remove("show"); });
+    $("buySave").addEventListener("click", () => {
+      const k = $("buyProd").value, unit = Number($("buyCost").value), err = $("buyErr"), now = Date.now();
+      if (!k) { err.textContent = "Elige un producto o 'Otro gasto'."; return; }
+      if (k === OTHER) {
+        const d = $("buyDesc").value.trim();
+        if (!d) { err.textContent = "Escribe en qué fue el gasto."; return; }
+        if (!(unit > 0)) { err.textContent = "Escribe el monto."; return; }
+        const eg = { id: now + "-g" + Math.random().toString(36).slice(2, 7), t: now, type: "compra", name: d, qty: 1, unit: unit, total: unit, other: true };
+        log.push(eg); saveLog(); queueOps({ logAdd: [eg] });
+        toast("Gasto registrado: " + money(unit));
+      } else {
+        const q = Math.floor(Number($("buyQty").value));
+        if (!(q >= 1)) { err.textContent = "Escribe cuántas piezas compraste."; return; }
+        if (!(unit > 0)) { err.textContent = "Escribe el costo por pieza."; return; }
+        const p = products[k];
+        stock[p.name] = (stockOf(k) || 0) + q;
+        cost[p.name] = unit;
+        const ec = { id: now + "-c" + Math.random().toString(36).slice(2, 7), t: now, type: "compra", name: p.name, qty: q, unit: unit, total: q * unit };
+        log.push(ec);
+        saveStockLocal(); saveCost(); saveLog();
+        queueOps({ add: { [p.name]: q }, logAdd: [ec] });
+        updateStockBadges();
+        if ($("invOverlay").classList.contains("show")) renderInv();
+        toast("Compra registrada: " + money(q * unit));
+      }
+      $("buyOverlay").classList.remove("show");
+    });
+
+    /* ----- Ventas por día de la semana ----- */
+    const DIAS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+    function weekHtml(off) {
+      const now = new Date();
+      const back = (now.getDay() + 6) % 7 + 7 * off;
+      const days = [];
+      let max = 0, tJ = 0, tV = 0;
+      for (let i = 0; i < 7; i++) {
+        const a = new Date(now.getFullYear(), now.getMonth(), now.getDate() - back + i);
+        const b = new Date(now.getFullYear(), now.getMonth(), now.getDate() - back + i + 1);
+        let vj = 0, vv = 0;
+        log.forEach(r => {
+          if (r.type !== "venta" || r.t < a.getTime() || r.t >= b.getTime()) return;
+          if (r.by === "vendedor") vv += r.total; else vj += r.total;
+        });
+        days.push({ name: DIAS[i], date: a.toLocaleDateString("es-MX", { day: "numeric", month: "short" }), j: vj, v: vv, today: off === 0 && i === (now.getDay() + 6) % 7 });
+        tJ += vj; tV += vv;
+        if (vj + vv > max) max = vj + vv;
+      }
+      const pct = x => x > 0 ? Math.max(2, x / max * 100) : 0;
+      return `<div class="wk"><b>📆 Ventas por día</b><div class="wleg"><span class="dot j"></span>Jefe <span class="dot v"></span>Vendedor</div>` + days.map(d => {
+        return `<div class="wrow ${d.today ? "now" : ""}"><span class="wd">${d.name}<small>${d.date}${d.today ? " · hoy" : ""}</small></span>` +
+          `<span class="wbar"><i class="bj" style="width:${pct(d.j)}%"></i><i class="bv" style="width:${pct(d.v)}%"></i></span>` +
+          `<span class="wv">${money(d.j + d.v)}<small>👔${money(d.j)} 🛒${money(d.v)}</small></span></div>`;
+      }).join("") + `<div class="wtot">👔 Jefe ${money(tJ)} · 🛒 Vendedor ${money(tV)}<br>Total de la semana: ${money(tJ + tV)}</div></div>`;
+    }
+    let weekOff = 0;
+    function renderWeek() {
+      document.querySelectorAll("#weekTabs .pill").forEach(b => b.classList.toggle("active", Number(b.dataset.w) === weekOff));
+      g("weekBox").innerHTML = weekHtml(weekOff);
+    }
+    g("weekTabs").addEventListener("click", e => {
+      const b = e.target.closest(".pill");
+      if (!b) return;
+      weekOff = Number(b.dataset.w);
+      renderWeek();
+    });
+
+    /* ----- Resumen del día ----- */
+    function dayStats() {
+      const from = periodStart("day");
+      let sales = 0, cogs = 0, profit = 0, noCost = 0, sJ = 0, sV = 0;
+      log.forEach(r => {
+        if (r.t < from || r.type !== "venta") return;
+        sales += r.total;
+        if (r.by === "vendedor") sV += r.total; else sJ += r.total;
+        if (typeof r.cost === "number") { cogs += r.cost * r.qty; profit += r.total - r.cost * r.qty; }
+        else noCost++;
+      });
+      return { sales, cogs, profit, noCost, sJ, sV };
+    }
+    function todayLine() {
+      const d = dayStats();
+      return `<div class="today"><b>📅 Hoy</b><br>💰 Ventas: ${money(d.sales)}<br>👔 Jefe: ${money(d.sJ)} · 🛒 Vendedor: ${money(d.sV)}<br>🏷️ Costo de ventas: ${money(d.cogs)}<br>✅ Ganancia: ${money(d.profit)}` +
+        (d.noCost ? `<br><small>${d.noCost} venta(s) sin costo capturado</small>` : "") + `</div>`;
+    }
+    let whoF = "all";
+    function whoOf(r) { return r.type === "venta" && r.by === "vendedor" ? "vendedor" : "jefe"; }
+    g("whoTabs").addEventListener("click", e => {
+      const b = e.target.closest(".pill");
+      if (!b) return;
+      whoF = b.dataset.who;
+      renderFin();
+    });
+
+    /* ----- Ventas y gastos ----- */
+    let period = "day";
+    function periodStart(p) {
+      const d = new Date();
+      if (p === "day") { d.setHours(0, 0, 0, 0); return d.getTime(); }
+      if (p === "week") return Date.now() - 7 * 864e5;
+      if (p === "month") return new Date(d.getFullYear(), d.getMonth(), 1).getTime();
+      return 0;
+    }
+    function periodRows() { const from = periodStart(period); return log.filter(r => r.t >= from).sort((a, b) => b.t - a.t); }
+    function fmtDate(t) { return new Date(t).toLocaleString("es-MX", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }); }
+    function renderFin() {
+      renderWeek();
+      document.querySelectorAll("#whoTabs .pill").forEach(b => b.classList.toggle("active", b.dataset.who === whoF));
+      document.querySelectorAll("#periods .pill").forEach(b => b.classList.toggle("active", b.dataset.p === period));
+      const rows = periodRows();
+      let sales = 0, spent = 0, profit = 0, cogs = 0, noCost = 0, vend = 0, pv = 0;
+      rows.forEach(r => {
+        if (r.type === "venta") {
+          sales += r.total;
+          if (r.by === "vendedor") vend += r.total;
+          if (typeof r.cost === "number") { cogs += r.cost * r.qty; profit += r.total - r.cost * r.qty; if (r.by === "vendedor") pv += r.total - r.cost * r.qty; } else noCost++;
+        } else spent += r.total;
+      });
+      const bal = sales - spent;
+      $("finCards").innerHTML =
+        `<div class="fcard g"><small>💰 Ventas</small><b>${money(sales)}</b></div>` +
+        `<div class="fcard"><small>🏷️ Costo de ventas</small><b>${money(cogs)}</b></div>` +
+        `<div class="fcard ${profit < 0 ? "r" : "g"}"><small>✅ Ganancia estimada</small><b>${money(profit)}</b></div>` +
+        `<div class="fcard r"><small>🧾 Gastos (compras)</small><b>${money(spent)}</b></div>` +
+        `<div class="fcard ${bal < 0 ? "r" : "g"}" style="grid-column:1/-1"><small>Balance (ventas − gastos)</small><b>${money(bal)}</b></div>`;
+      $("whoCards").innerHTML =
+        `<div class="fcard"><small>👔 Ventas del jefe</small><b>${money(sales - vend)}</b><small>Ganancia: ${money(profit - pv)}</small></div>` +
+        `<div class="fcard"><small>🛒 Ventas del vendedor</small><b>${money(vend)}</b><small>Ganancia: ${money(pv)}</small></div>`;
+      $("finNote").textContent = "Costo de ventas = lo que te costó lo que vendiste. Ganancia = ventas − costo de ventas." +
+        (noCost ? ` ${noCost} venta(s) sin costo capturado no entran en la ganancia.` : "");
+      const listRows = rows.filter(r => whoF === "all" || whoOf(r) === whoF);
+      const shown = listRows.slice(0, 60);
+      $("finList").innerHTML = shown.map(r => {
+        const isSale = r.type === "venta";
+        const label = r.other ? esc(r.name) : `${r.qty} x ${esc(r.name)}`;
+        return `<div class="mrow"><span>${isSale ? "💰" : "🧾"}</span>
+          <div class="mi">${label}<small>${fmtDate(r.t)}${r.other ? " · gasto" : ""}${r.type === "venta" ? (r.by === "vendedor" ? " · vendedor" : " · jefe") : ""}</small></div>
+          <span class="mt ${isSale ? "g" : "r"}">${isSale ? "+" : "−"}${money(r.total)}</span>
+          <button type="button" class="del" data-id="${esc(r.id)}" aria-label="Borrar movimiento">×</button></div>`;
+      }).join("") || "<p>No hay movimientos en este periodo.</p>";
+      if (listRows.length > shown.length) $("finList").innerHTML += `<p class="hint">Mostrando los 60 más recientes. Exporta el CSV para ver todos.</p>`;
+    }
+    $("invFin").addEventListener("click", () => { renderFin(); $("finOverlay").classList.add("show"); });
+    $("finClose").addEventListener("click", () => $("finOverlay").classList.remove("show"));
+    $("finOverlay").addEventListener("click", e => { if (e.target.id === "finOverlay") e.target.classList.remove("show"); });
+    $("periods").addEventListener("click", e => {
+      const b = e.target.closest(".pill");
+      if (!b) return;
+      period = b.dataset.p;
+      renderFin();
+    });
+    $("finList").addEventListener("click", e => {
+      const b = e.target.closest(".del");
+      if (!b) return;
+      log = log.filter(r => r.id !== b.dataset.id);
+      saveLog();
+      queueOps({ logDel: [b.dataset.id] });
+      renderFin();
+      toast("Movimiento borrado (el inventario no cambia)");
+    });
+    $("finCsv").addEventListener("click", () => {
+      const rows = [["Fecha", "Tipo", "Concepto", "Cantidad", "Precio o costo unitario", "Total", "Quién"]];
+      periodRows().filter(r => whoF === "all" || whoOf(r) === whoF).forEach(r => rows.push([new Date(r.t).toLocaleString("es-MX"), r.type === "venta" ? "Venta" : "Gasto", r.name, r.qty, r.unit, r.total, whoOf(r) === "vendedor" ? "Vendedor" : "Jefe"]));
+      downloadCsv(rows, "movimientos-chico-dulce.csv");
+    });
+
+    /* ----- Importar inventario desde Excel / CSV ----- */
+    const normName = t => String(t).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+    function parseCsv(text) {
+      text = text.replace(/^\ufeff/, "");
+      const first = text.split(/\r?\n/)[0] || "";
+      const delim = [",", ";", "\t"].map(d => [d, first.split(d).length]).sort((a, b) => b[1] - a[1])[0][0];
+      const rows = [];
+      let row = [], cur = "", q = false;
+      for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+        if (q) {
+          if (c === '"') { if (text[i + 1] === '"') { cur += '"'; i++; } else q = false; }
+          else cur += c;
+        } else if (c === '"') q = true;
+        else if (c === delim) { row.push(cur); cur = ""; }
+        else if (c === "\n") { row.push(cur); rows.push(row); row = []; cur = ""; }
+        else if (c !== "\r") cur += c;
+      }
+      if (cur !== "" || row.length) { row.push(cur); rows.push(row); }
+      return rows;
+    }
+    function toNum(v) {
+      if (v === undefined || v === null) return null;
+      let t = String(v).replace(/[$\s]/g, "");
+      if (t === "") return null;
+      if (t.includes(",") && !t.includes(".")) t = t.replace(",", "."); else t = t.replace(/,/g, "");
+      const n = Number(t);
+      return isNaN(n) ? null : n;
+    }
+    function loadXlsx() {
+      return new Promise((resolve, reject) => {
+        if (window.XLSX) return resolve();
+        const sc = document.createElement("script");
+        sc.src = "https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js";
+        sc.onload = () => resolve();
+        sc.onerror = () => reject(new Error("No se pudo cargar el lector de Excel (¿sin internet?)."));
+        document.head.appendChild(sc);
+      });
+    }
+    function planImport(rows) {
+      let cols = { name: 0, stock: 1, cost: 2 }, start = 0;
+      for (let i = 0; i < Math.min(rows.length, 10); i++) {
+        const cells = rows[i].map(normName);
+        const ni = cells.findIndex(c => /^(producto|productos|nombre|articulo|descripcion|item)/.test(c));
+        if (ni < 0) continue;
+        cols = { name: ni, stock: -1, cost: -1 };
+        cells.forEach((c, j) => {
+          if (cols.stock < 0 && /stock|cantidad|existenc|piezas|inventario|unidades/.test(c)) cols.stock = j;
+          else if (cols.cost < 0 && /costo|compra/.test(c)) cols.cost = j;
+        });
+        start = i + 1;
+        break;
+      }
+      if (cols.stock < 0 && cols.cost < 0) throw new Error("No encontré columnas de Stock o Costo.");
+      const byNorm = {};
+      Object.keys(products).forEach(k => { byNorm[normName(products[k].name)] = k; });
+      const found = {}, missing = [];
+      for (let i = start; i < rows.length; i++) {
+        const r = rows[i], raw = String(r[cols.name] === undefined ? "" : r[cols.name]).trim();
+        const st = cols.stock >= 0 ? toNum(r[cols.stock]) : null, co = cols.cost >= 0 ? toNum(r[cols.cost]) : null;
+        if (!raw || (st === null && co === null)) continue;
+        const n = normName(raw);
+        let key = byNorm[n];
+        if (!key && n.length >= 4) {
+          const c = Object.keys(byNorm).filter(x => x.includes(n) || n.includes(x));
+          if (c.length === 1) key = byNorm[c[0]];
+        }
+        if (!key) { missing.push(raw); continue; }
+        found[key] = { st: st, co: co };
+      }
+      return { found, missing };
+    }
+    let pendingImp = null;
+    function showImportPlan(plan, fname) {
+      pendingImp = plan;
+      const keys = Object.keys(plan.found);
+      const nSt = keys.filter(k => plan.found[k].st !== null).length, nCo = keys.filter(k => plan.found[k].co !== null).length;
+      const miss = plan.missing.slice(0, 15).map(esc).join(", ") + (plan.missing.length > 15 ? "…" : "");
+      g("impBox").innerHTML = `<div class="today"><b>📥 ${esc(fname)}</b><br>Productos reconocidos: ${keys.length} (stock: ${nSt}, costo: ${nCo})` +
+        (plan.missing.length ? `<br>No encontré en el menú (${plan.missing.length}): ${miss}` : "") +
+        `<br><small>Los productos que no aparecen en el archivo no se modifican.</small>` +
+        (keys.length ? `<div class="topbtns"><button type="button" class="pill" id="impApply">✅ Aplicar</button><button type="button" class="pill" id="impCancel" style="background:#e9e1fb">Cancelar</button></div>` :
+          `<div class="topbtns"><button type="button" class="pill" id="impCancel" style="background:#e9e1fb">Cerrar</button></div>`) + `</div>`;
+    }
+    g("invImp").addEventListener("click", () => g("impFile").click());
+    g("impFile").addEventListener("change", async e => {
+      const f = e.target.files[0];
+      e.target.value = "";
+      if (!f) return;
+      g("impBox").innerHTML = '<div class="today">Leyendo archivo...</div>';
+      try {
+        let rows;
+        if (/\.(xlsx|xls)$/i.test(f.name)) {
+          await loadXlsx();
+          const wb = XLSX.read(await f.arrayBuffer(), { type: "array" });
+          rows = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { header: 1, defval: "" });
+        } else rows = parseCsv(await f.text());
+        showImportPlan(planImport(rows), f.name);
+      } catch (err) {
+        g("impBox").innerHTML = `<div class="today">No pude leer el archivo. ${esc(err.message || "")}<br><small>Prueba guardándolo en Excel como CSV (Archivo → Guardar como → CSV) y súbelo de nuevo.</small></div>`;
+      }
+    });
+    g("impBox").addEventListener("click", e => {
+      if (e.target.id === "impCancel") { pendingImp = null; g("impBox").innerHTML = ""; return; }
+      if (e.target.id !== "impApply" || !pendingImp) return;
+      const keys = Object.keys(pendingImp.found);
+      keys.forEach(k => {
+        const it = pendingImp.found[k], name = products[k].name;
+        if (it.st !== null) stock[name] = Math.max(0, Math.floor(it.st));
+        if (it.co !== null) cost[name] = Math.max(0, it.co);
+      });
+      saveStock(); saveCost();
+      updateStockBadges();
+      renderInv();
+      pendingImp = null;
+      g("impBox").innerHTML = "";
+      toast("Inventario importado: " + keys.length + " productos ✅");
+    });
+
+    renderFilters();
+    renderMenu();
+    attachFilters();
+    attachCardClick();
+    renderConfetti();
+      pull();
+    setInterval(() => { if (!document.hidden) pull(); }, 15000);
+    document.addEventListener("visibilitychange", () => { if (!document.hidden) pull(); });
+  </script>
+</body>
+</html>
